@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DeFlying Gravity | Metro Atlanta Real Estate Media</title>
+<meta name="description" content="Real estate photography, cinematic video, drone, and 3D tours across Metro Atlanta. Book online in minutes — photo, video, drone, and 3D from one team.">
+<meta name="theme-color" content="#0d1f12">
+<link rel="icon" href="assets/logo.jpg">
+<link rel="apple-touch-icon" href="assets/logo.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DeFlying Gravity — Metro Atlanta Real Estate Media">
+<meta property="og:description" content="Photography, video, drone, and 3D tours that make Metro Atlanta listings rise to the top. Book online in minutes.">
+<meta property="og:url" content="https://deflyinggravity.com">
+<meta property="og:image" content="https://deflyinggravity.com/assets/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<style>
+  :root{
+    color-scheme: dark;
+    --ground:#0d1f12; --ground-2:#112a19; --panel:#16341f;
+    --line:rgba(150,200,160,.16);
+    --green:#3f8a4d; --green-bright:#6fce7f;
+    --pink:#ff5ea3; --pink-soft:#ff89bd;
+    --cream:#f4f1e8; --text:#e9efe7; --muted:#9db3a3;
+    --serif:"Hoefler Text","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,sans-serif;
+    --wrap:1180px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--text);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--green-bright);
+    font-weight:700;margin:0 0 14px}
+  h1,h2,h3{font-family:var(--serif);font-weight:400;text-wrap:balance;margin:0}
+  .lead{color:var(--muted);font-size:clamp(16px,1.6vw,19px);max-width:60ch}
+  section{padding:clamp(64px,9vw,120px) 0}
+
+  /* wordmark */
+  .mark{font-family:var(--serif);font-size:20px;letter-spacing:.01em;white-space:nowrap}
+  .mark .d{color:var(--green-bright)} .mark .g{color:var(--pink)}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
+    background:rgba(13,31,18,.72);border-bottom:1px solid var(--line)}
+  .nav .row{display:flex;align-items:center;gap:20px;height:64px}
+  .nav .links{display:flex;gap:26px;margin-left:auto;font-size:14px;color:var(--muted)}
+  .nav .links a:hover{color:var(--text)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--sans);font-weight:700;
+    font-size:14px;padding:11px 20px;border-radius:999px;cursor:pointer;border:1px solid transparent;
+    transition:transform .12s ease,background .2s ease,color .2s ease}
+  .btn:active{transform:scale(.97)}
+  .btn-pink{background:var(--pink);color:#3a0c22}
+  .btn-pink:hover{background:var(--pink-soft)}
+  .btn-ghost{border-color:var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--green-bright);color:var(--green-bright)}
+  .nav .btn{padding:9px 18px}
+  @media(max-width:760px){ .nav .links{display:none} }
+
+  /* hero — WebGL canvas renders the photo on a curved 3D plane; the CSS
+     background is the fallback if WebGL is unavailable, so the hero always works */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;
+    background:linear-gradient(180deg,rgba(13,31,18,.35) 0%,rgba(13,31,18,.55) 45%,rgba(13,31,18,.96) 100%),
+      url("assets/hero.jpg");
+    background-size:cover;background-position:center}
+  #heroGL{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(180deg,rgba(13,31,18,.30) 0%,rgba(13,31,18,.52) 45%,rgba(13,31,18,.96) 100%)}
+  .hero .inner{position:relative;z-index:2}
+  .hero .inner{padding-bottom:clamp(56px,8vw,96px);opacity:0;transform:translateY(18px);
+    animation:rise .9s cubic-bezier(.2,.7,.2,1) .15s forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .hero h1{font-size:clamp(40px,7.2vw,88px);line-height:1.02;letter-spacing:-.01em;max-width:15ch}
+  .hero h1 em{font-style:italic;color:var(--pink-soft)}
+  .hero .lead{margin-top:22px;color:#d7e2d6}
+  .hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+  .hero .credit{margin-top:28px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:9px}
+  .hero .credit::before{content:"";width:26px;height:1px;background:var(--green-bright)}
+
+  /* generic section head */
+  .head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+  .head h2{font-size:clamp(28px,4vw,46px);line-height:1.05;max-width:18ch}
+
+  /* about */
+  .about{background:var(--ground-2)}
+  .about .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(30px,6vw,80px);align-items:center}
+  .about p{color:var(--muted);font-size:18px}
+  .about p + p{margin-top:18px}
+  @media(max-width:820px){ .about .grid{grid-template-columns:1fr} }
+
+  /* services */
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px 22px;
+    transition:transform .16s ease,border-color .2s ease}
+  .card:hover{transform:translateY(-4px);border-color:var(--green-bright)}
+  .card .n{font-family:var(--serif);font-size:15px;color:var(--green-bright);margin-bottom:16px}
+  .card h3{font-size:22px;margin-bottom:8px;color:var(--cream)}
+  .card p{margin:0;color:var(--muted);font-size:14.5px}
+  @media(max-width:900px){ .cards{grid-template-columns:1fr 1fr} }
+  @media(max-width:520px){ .cards{grid-template-columns:1fr} }
+
+  /* work gallery */
+  .work{background:var(--ground-2)}
+  .gal{display:grid;grid-template-columns:2fr 1fr;gap:14px}
+  .gal .col{display:grid;gap:14px}
+  .gal img{width:100%;height:100%;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+  .gal .tall{aspect-ratio:3/4}
+  .gal .wide{aspect-ratio:3/2}
+  .gal .big{aspect-ratio:3/2;height:100%}
+  @media(max-width:820px){ .gal{grid-template-columns:1fr} .gal .big,.gal .tall,.gal .wide{aspect-ratio:3/2} }
+  /* vertical reels */
+  .reels{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:700px;margin:0 auto 16px}
+  .reel{position:relative;aspect-ratio:9/16;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:0}
+  .reel video{width:100%;height:100%;object-fit:cover;display:block}
+  .reel .cap{position:absolute;left:0;right:0;bottom:0;padding:30px 14px 12px;font-size:12.5px;
+    font-weight:600;color:#fff;background:linear-gradient(transparent,rgba(8,18,11,.9))}
+  .reel .play{position:absolute;top:12px;right:12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    color:#fff;background:rgba(8,18,11,.5);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:4px 10px;backdrop-filter:blur(4px)}
+  @media(max-width:520px){ .reels{grid-template-columns:1fr;max-width:360px} }
+
+  /* pricing */
+  .price{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .tier{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 22px;display:flex;flex-direction:column}
+  .tier.feature{border-color:var(--pink);box-shadow:0 0 0 1px var(--pink) inset}
+  .tier .t{font-family:var(--serif);font-size:22px;color:var(--cream)}
+  .tier .amt{font-size:15px;color:var(--muted);margin:6px 0 18px}
+  .tier .amt b{color:var(--pink-soft);font-size:30px;font-family:var(--serif);font-weight:400}
+  .tier ul{list-style:none;margin:0 0 22px;padding:0;font-size:14px;color:var(--muted);flex:1}
+  .tier li{padding:7px 0;border-top:1px solid var(--line)}
+  .tier li:first-child{border-top:none}
+  .tag{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);
+    font-weight:700;margin-bottom:10px}
+  .price-note{margin-top:22px;color:var(--muted);font-size:14px;text-align:center}
+  .price-note b{color:var(--green-bright)}
+  @media(max-width:900px){ .price{grid-template-columns:1fr 1fr} }
+  @media(max-width:520px){ .price{grid-template-columns:1fr} }
+
+  /* stats */
+  .stats{background:var(--pink);color:#3a0c22}
+  .stats .row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+  .stats .num{font-family:var(--serif);font-size:clamp(30px,4vw,48px);line-height:1}
+  .stats .lab{font-size:13px;font-weight:700;letter-spacing:.06em;margin-top:8px;opacity:.82}
+  @media(max-width:640px){ .stats .row{grid-template-columns:1fr 1fr;gap:32px 16px} }
+
+  /* testimonials */
+  .quotes{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .quote{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .quote p{font-family:var(--serif);font-size:19px;line-height:1.5;color:var(--cream);margin:0 0 16px}
+  .quote .by{font-size:13px;color:var(--muted)}
+  .ph{display:inline-block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--pink);
+    border:1px dashed var(--pink);border-radius:6px;padding:2px 7px;margin-bottom:14px}
+  @media(max-width:720px){ .quotes{grid-template-columns:1fr} }
+
+  /* areas */
+  .areas{background:var(--ground-2)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;max-width:70ch}
+  .chip{border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-size:13.5px;color:var(--muted)}
+
+  /* contact */
+  .contact{text-align:center}
+  .contact h2{font-size:clamp(30px,5vw,58px);margin-bottom:18px}
+  .contact .lead{margin:0 auto 30px}
+  .contact .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .reach{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:34px;font-size:15px;color:var(--muted)}
+  .reach a:hover{color:var(--green-bright)}
+
+  /* footer */
+  footer{border-top:1px solid var(--line);padding:40px 0;background:var(--ground)}
+  footer .row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  footer .fnav{display:flex;gap:22px;font-size:14px;color:var(--muted)}
+  footer .fnav a:hover{color:var(--text)}
+  .copy{font-size:12.5px;color:var(--muted)}
+
+  @media (prefers-reduced-motion: reduce){ *{animation:none!important;transition:none!important} }
+</style>
+
+<nav class="nav">
+  <div class="wrap row">
+    <a class="mark" href="#top"><span class="d">DeFLYING</span> <span class="g">GRAVITY</span></a>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="btn btn-pink" href="https://book.deflyinggravity.com/order/dfg/real-estate-media">Book a shoot</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <canvas id="heroGL" aria-hidden="true"></canvas>
+  <div class="wrap inner">
+    <p class="eyebrow">Metro Atlanta &middot; Real Estate Media</p>
+    <h1>Listings that <em>defy gravity.</em></h1>
+    <p class="lead">Photography, cinematic video, drone, and 3D tours that make Metro&nbsp;Atlanta homes rise to the top of the feed &mdash; booked online in minutes, edited to sell.</p>
+    <div class="cta">
+      <a class="btn btn-pink" href="https://book.deflyinggravity.com/order/dfg/real-estate-media">Book a shoot</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/a_adrian_d">See the work</a>
+    </div>
+    <div class="credit">Hundreds of listings shot across Metro Atlanta since 2024</div>
+  </div>
+</header>
+
+<section class="about" id="about">
+  <div class="wrap grid">
+    <div>
+      <p class="eyebrow">The Studio</p>
+      <h2 style="font-size:clamp(28px,4vw,46px);line-height:1.06">Media that makes agents look like the pros they are.</h2>
+    </div>
+    <div>
+      <p>DeFlying Gravity is a Metro Atlanta real estate media company led by Adrian McRae. From MLS photo sets to full cinematic tours, we handle the media so you can handle the deal.</p>
+      <p>Book any service online in about a minute, get your gallery back fast, and keep your cash flow easy &mdash; every listing can be <strong style="color:var(--green-bright)">$0 due at booking, paid when it closes.</strong></p>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow">What we shoot</p>
+        <h2>Everything a listing needs, from one team.</h2>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="n">01</div><h3>Photography</h3><p>Bright, true-to-life MLS photo sets &mdash; HDR-blended and hand-edited to sell.</p></div>
+      <div class="card"><div class="n">02</div><h3>Video</h3><p>Vertical social reels and cinematic walkthroughs built for the scroll.</p></div>
+      <div class="card"><div class="n">03</div><h3>Drone &amp; Aerial</h3><p>Coverage from a licensed drone pilot that frames the whole property and its setting.</p></div>
+      <div class="card"><div class="n">04</div><h3>3D Tours &amp; Floor Plans</h3><p>Matterport &amp; Zillow 3D tours plus measured floor plans buyers can walk.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow">Recent work</p>
+        <h2>Real homes, shot across Metro Atlanta.</h2>
+      </div>
+      <a class="btn btn-ghost" href="https://www.instagram.com/a_adrian_d">See more on Instagram</a>
+    </div>
+    <div class="reels">
+      <figure class="reel">
+        <video src="assets/reel.mp4" poster="assets/reel-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+        <span class="play">Reel</span>
+        <figcaption class="cap">1414 Golf Link Dr &middot; Stone Mountain</figcaption>
+      </figure>
+      <figure class="reel">
+        <video src="assets/reel2.mp4" poster="assets/reel2-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+        <span class="play">Reel</span>
+        <figcaption class="cap">230 Pinebridge Ct &middot; Alpharetta</figcaption>
+      </figure>
+    </div>
+    <div class="gal">
+      <div class="col"><img class="big" src="assets/g1.jpg" alt="DeFlying Gravity real estate photography" loading="lazy"></div>
+      <div class="col">
+        <img class="wide" src="assets/g2.jpg" alt="Metro Atlanta listing photo" loading="lazy">
+        <img class="wide" src="assets/g3.jpg" alt="Metro Atlanta listing photo" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow">Packages</p>
+        <h2>Simple packages, priced by the property.</h2>
+      </div>
+    </div>
+    <div class="price">
+      <div class="tier">
+        <div class="t">Base Media</div>
+        <div class="amt">from <b>$250</b></div>
+        <ul><li>25 MLS photos</li><li>6 drone photos</li><li>B&amp;W floor plan</li></ul>
+        <a class="btn btn-ghost" href="https://book.deflyinggravity.com/order/dfg/real-estate-media">Book</a>
+      </div>
+      <div class="tier">
+        <div class="t">Pro</div>
+        <div class="amt">from <b>$450</b></div>
+        <ul><li>40 MLS photos</li><li>10 drone photos</li><li>Virtual twilight</li><li>3D walkthrough + reel</li></ul>
+        <a class="btn btn-ghost" href="https://book.deflyinggravity.com/order/dfg/real-estate-media">Book</a>
+      </div>
+      <div class="tier feature">
+        <span class="tag">Most booked</span>
+        <div class="t">Plus</div>
+        <div class="amt">from <b>$700</b></div>
+        <ul><li>60 MLS photos</li><li>12 drone photos</li><li>Horizontal video</li><li>Matterport / Zillow 3D + floor plans</li></ul>
+        <a class="btn btn-pink" href="https://book.deflyinggravity.com/order/dfg/real-estate-media">Book</a>
+      </div>
+      <div class="tier">
+        <div class="t">Luxury</div>
+        <div class="amt">from <b>$1,234</b></div>
+        <ul><li>Unlimited MLS photos</li><li>Drone photos</li><li>3D render video</li><li>Floor plans &amp; more</li></ul>
+        <a class="btn btn-ghost" href="https://book.deflyinggravity.com/order/dfg/real-estate-media">Book</a>
+      </div>
+    </div>
+    <p class="price-note">Every package can be <b>$0 due at booking</b> &mdash; pay when the listing closes.</p>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="row">
+      <div><div class="num">485+</div><div class="lab">Listings delivered</div></div>
+      <div><div class="num">2024</div><div class="lab">Serving Metro Atlanta</div></div>
+      <div><div class="num">1&nbsp;min</div><div class="lab">To book online</div></div>
+      <div><div class="num">Photo &middot; Video<br>Drone &middot; 3D</div><div class="lab">One team, every asset</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <p class="eyebrow">What agents say</p>
+        <h2>Trusted by Metro Atlanta&rsquo;s busiest agents.</h2>
+      </div>
+      <a class="btn btn-ghost" href="https://maps.app.goo.gl/NkMuKXQb21rp45pm6">Read our Google reviews</a>
+    </div>
+    <div class="quotes">
+      <div class="quote">
+        <p>&ldquo;He is an expert. I highly recommend. I called him this morning and he was able to get my listing&rsquo;s photos the same day. Great service.&rdquo;</p>
+        <div class="by">&mdash; Julian Zamora, Century 21 &middot; <span style="color:var(--green-bright)">via Google</span></div>
+      </div>
+      <div class="quote">
+        <span class="ph">Placeholder &mdash; add another review</span>
+        <p>&ldquo;A second client quote can go here whenever you have one &mdash; just send it over.&rdquo;</p>
+        <div class="by">&mdash; Agent name, Brokerage</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="areas" id="areas">
+  <div class="wrap">
+    <div class="head"><div>
+      <p class="eyebrow">Service areas</p>
+      <h2>Covering the metro, corner to corner.</h2>
+    </div></div>
+    <div class="chips">
+      <span class="chip">Atlanta</span><span class="chip">Alpharetta</span><span class="chip">Marietta</span>
+      <span class="chip">Decatur</span><span class="chip">Stone Mountain</span><span class="chip">Duluth</span>
+      <span class="chip">Kennesaw</span><span class="chip">Lawrenceville</span><span class="chip">Suwanee</span>
+      <span class="chip">Buford</span><span class="chip">Cumming</span><span class="chip">Gainesville</span>
+      <span class="chip">McDonough</span><span class="chip">Jonesboro</span><span class="chip">Smyrna</span>
+      <span class="chip">Hampton</span><span class="chip">+ surrounding areas</span>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center">Let&rsquo;s work</p>
+    <h2>Let&rsquo;s shoot your next listing.</h2>
+    <p class="lead">Book online in about a minute, or reach out and we&rsquo;ll get you on the calendar.</p>
+    <div class="cta">
+      <a class="btn btn-pink" href="https://book.deflyinggravity.com/order/dfg/real-estate-media">Book a shoot</a>
+      <a class="btn btn-ghost" href="tel:8636044376">Call or text</a>
+    </div>
+    <div class="reach">
+      <a href="tel:8636044376">863-604-4376</a>
+      <a href="mailto:amcrae@deflyinggravity.com">amcrae@deflyinggravity.com</a>
+      <a href="https://www.instagram.com/a_adrian_d">@a_adrian_d</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <a class="mark" href="#top"><span class="d">DeFLYING</span> <span class="g">GRAVITY</span></a>
+    <div class="fnav">
+      <a href="#work">Work</a><a href="#pricing">Pricing</a>
+      <a href="#areas">Areas</a>
+      <a href="https://maps.app.goo.gl/NkMuKXQb21rp45pm6">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="copy">&copy; 2026 DeFlying Gravity Real Estate Media &middot; Metro Atlanta</div>
+  </div>
+</footer>
+
+<script>
+/* Hero in 3D — hand-written WebGL, no libraries.
+   The listing photo is mapped onto a subtly curved plane and rendered with a
+   real perspective camera; the cursor (or device tilt) rotates it a few degrees.
+   Deliberately restrained: the photography is the point, the depth just frames it.
+   If WebGL is missing, or the visitor prefers reduced motion, we leave the CSS
+   background hero in place and never start the loop. */
+(function () {
+  var cv = document.getElementById('heroGL');
+  if (!cv) return;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var gl = null;
+  try { gl = cv.getContext('webgl', { antialias: true, alpha: true }); } catch (e) {}
+  if (!gl || reduce) { cv.style.display = 'none'; return; }
+
+  var VS = [
+    'attribute vec2 p;varying vec2 v;uniform mat4 mvp;uniform float bend;',
+    'void main(){v=p*0.5+0.5;',
+    ' float d=length(p*vec2(1.0,0.75));',
+    ' float z=-bend*d*d;',                     /* gentle convex curve */
+    ' gl_Position=mvp*vec4(p,z,1.0);}'
+  ].join('\n');
+
+  var FS = [
+    'precision mediump float;varying vec2 v;uniform sampler2D tex;uniform vec2 cover;',
+    'void main(){',
+    ' vec2 uv=(v-0.5)*cover+0.5;',            /* object-fit: cover */
+    ' uv.y=1.0-uv.y;',
+    ' vec3 c=texture2D(tex,uv).rgb;',
+    ' float vig=smoothstep(1.25,0.25,length(v-0.5)*1.6);',
+    ' gl_FragColor=vec4(c*vig,1.0);}'
+  ].join('\n');
+
+  function sh(type, src) {
+    var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
+    return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
+  }
+  var vs = sh(gl.VERTEX_SHADER, VS), fs = sh(gl.FRAGMENT_SHADER, FS);
+  if (!vs || !fs) { cv.style.display = 'none'; return; }
+  var prog = gl.createProgram();
+  gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { cv.style.display = 'none'; return; }
+  gl.useProgram(prog);
+
+  /* subdivided plane so the curve is smooth, not faceted */
+  var N = 48, verts = [], idx = [];
+  for (var y = 0; y <= N; y++) for (var x = 0; x <= N; x++) verts.push(x / N * 2 - 1, y / N * 2 - 1);
+  for (var y2 = 0; y2 < N; y2++) for (var x2 = 0; x2 < N; x2++) {
+    var a = y2 * (N + 1) + x2, b = a + 1, c = a + N + 1, d = c + 1;
+    idx.push(a, b, c, b, d, c);
+  }
+  var vb = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, vb);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
+  var loc = gl.getAttribLocation(prog, 'p');
+  gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  var ib = gl.createBuffer();
+  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ib);
+  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(idx), gl.STATIC_DRAW);
+
+  var uMVP = gl.getUniformLocation(prog, 'mvp'),
+      uBend = gl.getUniformLocation(prog, 'bend'),
+      uCover = gl.getUniformLocation(prog, 'cover');
+
+  /* texture: the hero photo (1x1 placeholder until it decodes) */
+  var tex = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, tex);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, 1, 1, 0, gl.RGB, gl.UNSIGNED_BYTE, new Uint8Array([20, 45, 26]));
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+  var img = new Image(), ready = false, iw = 1, ih = 1;
+  img.onload = function () {
+    iw = img.naturalWidth; ih = img.naturalHeight;
+    gl.bindTexture(gl.TEXTURE_2D, tex);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
+    ready = true;
+  };
+  img.src = 'assets/hero.jpg';
+
+  /* pointer / tilt, smoothed */
+  var tx = 0, ty = 0, cx = 0, cy = 0;
+  addEventListener('pointermove', function (e) {
+    tx = (e.clientX / innerWidth - 0.5) * 2; ty = (e.clientY / innerHeight - 0.5) * 2;
+  }, { passive: true });
+  addEventListener('deviceorientation', function (e) {
+    if (e.gamma == null) return;
+    tx = Math.max(-1, Math.min(1, e.gamma / 30)); ty = Math.max(-1, Math.min(1, (e.beta - 45) / 30));
+  }, { passive: true });
+
+  function mul(a, b) { /* 4x4 */
+    var o = new Float32Array(16);
+    for (var i = 0; i < 4; i++) for (var j = 0; j < 4; j++) {
+      var s = 0; for (var k = 0; k < 4; k++) s += a[k * 4 + j] * b[i * 4 + k];
+      o[i * 4 + j] = s;
+    }
+    return o;
+  }
+  function persp(f, asp, n, fa) {
+    var t = 1 / Math.tan(f / 2);
+    return new Float32Array([t / asp,0,0,0, 0,t,0,0, 0,0,(fa+n)/(n-fa),-1, 0,0,2*fa*n/(n-fa),0]);
+  }
+  function rotY(a){var c=Math.cos(a),s=Math.sin(a);return new Float32Array([c,0,-s,0, 0,1,0,0, s,0,c,0, 0,0,0,1]);}
+  function rotX(a){var c=Math.cos(a),s=Math.sin(a);return new Float32Array([1,0,0,0, 0,c,s,0, 0,-s,c,0, 0,0,0,1]);}
+  function trans(x,y,z){return new Float32Array([1,0,0,0, 0,1,0,0, 0,0,1,0, x,y,z,1]);}
+
+  function resize() {
+    var dpr = Math.min(devicePixelRatio || 1, 2);
+    var w = cv.clientWidth, h = cv.clientHeight;
+    if (cv.width !== w * dpr || cv.height !== h * dpr) {
+      cv.width = w * dpr; cv.height = h * dpr;
+      gl.viewport(0, 0, cv.width, cv.height);
+    }
+  }
+
+  var start = performance.now();
+  function frame(now) {
+    resize();
+    var asp = cv.clientWidth / Math.max(1, cv.clientHeight);
+    cx += (tx - cx) * 0.045; cy += (ty - cy) * 0.045;      /* easing */
+    var t = (now - start) / 1000;
+
+    /* plane is scaled to fill the frame at this camera distance */
+    var dist = 2.15;
+    var P = persp(50 * Math.PI / 180, asp, 0.1, 12);
+    var M = mul(trans(0, 0, -dist), mul(rotY(cx * 0.10 + Math.sin(t * 0.18) * 0.012),
+                                        rotX(-cy * 0.07 + Math.cos(t * 0.15) * 0.010)));
+    /* Oversize the plane so the curve + tilt can never expose an edge.
+       Visible half-height at this distance is dist*tan(fov/2) ~= 1.0, and the
+       bend pushes the rim away from camera, so we carry a healthy margin. */
+    var S = 1.85;
+    var fill = new Float32Array([asp * S,0,0,0, 0,S,0,0, 0,0,1,0, 0,0,0,1]);
+    gl.uniformMatrix4fv(uMVP, false, mul(P, mul(M, fill)));
+    gl.uniform1f(uBend, 0.10);
+
+    /* object-fit: cover maths for the texture */
+    var pa = asp, ia = iw / ih, sx = 1, sy = 1;
+    if (pa > ia) { sy = ia / pa; } else { sx = pa / ia; }
+    gl.uniform2f(uCover, sx, sy);
+
+    gl.clearColor(0.051, 0.122, 0.071, 1);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    if (ready) gl.drawElements(gl.TRIANGLES, idx.length, gl.UNSIGNED_SHORT, 0);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+
+</body>
+</html>
