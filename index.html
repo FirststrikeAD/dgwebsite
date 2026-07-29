@@ -61,15 +61,12 @@
   .nav .btn{padding:9px 18px}
   @media(max-width:760px){ .nav .links{display:none} }
 
-  /* hero — WebGL canvas renders the photo on a curved 3D plane; the CSS
-     background is the fallback if WebGL is unavailable, so the hero always works */
+  /* hero — a still photo. No cursor-tracking 3D: it pulled attention away from
+     the photography and felt gimmicky on a real estate site. */
   .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;
     background:linear-gradient(180deg,rgba(13,31,18,.35) 0%,rgba(13,31,18,.55) 45%,rgba(13,31,18,.96) 100%),
       url("assets/hero.jpg");
     background-size:cover;background-position:center}
-  #heroGL{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
-  .hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-    background:linear-gradient(180deg,rgba(13,31,18,.30) 0%,rgba(13,31,18,.52) 45%,rgba(13,31,18,.96) 100%)}
   .hero .inner{position:relative;z-index:2}
   .hero .inner{padding-bottom:clamp(56px,8vw,96px);opacity:0;transform:translateY(18px);
     animation:rise .9s cubic-bezier(.2,.7,.2,1) .15s forwards}
@@ -203,7 +200,6 @@
 </nav>
 
 <header class="hero" id="top">
-  <canvas id="heroGL" aria-hidden="true"></canvas>
   <div class="wrap inner">
     <p class="eyebrow">Metro Atlanta &middot; Real Estate Media</p>
     <h1>Listings that <em>defy gravity.</em></h1>
@@ -257,8 +253,9 @@
     </div>
     <div class="reels">
       <figure class="reel">
-        <video src="assets/reel.mp4" poster="assets/reel-poster.jpg" autoplay muted loop playsinline preload="metadata"></video>
+        <video src="assets/reel.mp4" poster="assets/reel-poster.jpg" muted loop playsinline preload="none"></video>
         <span class="play">Reel</span>
+        <div class="tap"><span>&#9654;</span></div>
         <figcaption class="cap">1414 Golf Link Dr &middot; Stone Mountain</figcaption>
       </figure>
       <figure class="reel">
@@ -410,178 +407,45 @@
   </div>
 </footer>
 
+
 <script>
-/* Reels: the first plays on its own; the rest wait for a tap (or hover on a
-   mouse). Four videos playing at once is heavy on data and battery, and gives
-   the eye nowhere to land — one moving thing reads better. */
+/* Reels play together, but only while they are on screen.
+   Nothing plays until you scroll to the Work section, so the page opens fast,
+   and everything pauses when you scroll away — which keeps phone batteries and
+   data plans intact. Tapping a reel still toggles it, and if a browser blocks
+   autoplay (data saver, low power mode) the play badge stays up so it never
+   looks broken. */
 (function () {
   var reels = [].slice.call(document.querySelectorAll('.reel'));
-  reels.forEach(function (r, i) {
-    var v = r.querySelector('video');
-    if (!v) return;
-    if (i === 0) { r.classList.add('playing'); return; }   // first one autoplays
-    function play() {
-      if (!v.src && v.dataset.src) v.src = v.dataset.src;
-      var p = v.play();
-      if (p && p.then) p.then(function(){ r.classList.add('playing'); }).catch(function(){});
-      else r.classList.add('playing');
-    }
-    function stop() { v.pause(); r.classList.remove('playing'); }
-    r.addEventListener('click', function () { v.paused ? play() : stop(); });
-    if (matchMedia('(hover:hover)').matches) {
-      r.addEventListener('mouseenter', play);
-      r.addEventListener('mouseleave', stop);
-    }
+  if (!reels.length) return;
+
+  function play(r) {
+    var v = r.querySelector('video'); if (!v) return;
+    var p = v.play();
+    if (p && p.then) {
+      p.then(function () { r.classList.add('playing'); })
+       .catch(function () { r.classList.remove('playing'); });
+    } else { r.classList.add('playing'); }
+  }
+  function stop(r) {
+    var v = r.querySelector('video'); if (!v) return;
+    v.pause(); r.classList.remove('playing');
+  }
+
+  reels.forEach(function (r) {
+    r.addEventListener('click', function () {
+      var v = r.querySelector('video');
+      if (v) { v.paused ? play(r) : stop(r); }
+    });
   });
-})();
 
-/* Hero in 3D — hand-written WebGL, no libraries.
-   The listing photo is mapped onto a subtly curved plane and rendered with a
-   real perspective camera; the cursor (or device tilt) rotates it a few degrees.
-   Deliberately restrained: the photography is the point, the depth just frames it.
-   If WebGL is missing, or the visitor prefers reduced motion, we leave the CSS
-   background hero in place and never start the loop. */
-(function () {
-  var cv = document.getElementById('heroGL');
-  if (!cv) return;
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var gl = null;
-  try { gl = cv.getContext('webgl', { antialias: true, alpha: true }); } catch (e) {}
-  if (!gl || reduce) { cv.style.display = 'none'; return; }
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) { reels.forEach(play); return; }
 
-  var VS = [
-    'attribute vec2 p;varying vec2 v;uniform mat4 mvp;uniform float bend;',
-    'void main(){v=p*0.5+0.5;',
-    ' float d=length(p*vec2(1.0,0.75));',
-    ' float z=-bend*d*d;',                     /* gentle convex curve */
-    ' gl_Position=mvp*vec4(p,z,1.0);}'
-  ].join('\n');
-
-  var FS = [
-    'precision mediump float;varying vec2 v;uniform sampler2D tex;uniform vec2 cover;',
-    'void main(){',
-    ' vec2 uv=(v-0.5)*cover+0.5;',            /* object-fit: cover */
-    ' uv.y=1.0-uv.y;',
-    ' vec3 c=texture2D(tex,uv).rgb;',
-    ' float vig=smoothstep(1.25,0.25,length(v-0.5)*1.6);',
-    ' gl_FragColor=vec4(c*vig,1.0);}'
-  ].join('\n');
-
-  function sh(type, src) {
-    var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s);
-    return gl.getShaderParameter(s, gl.COMPILE_STATUS) ? s : null;
-  }
-  var vs = sh(gl.VERTEX_SHADER, VS), fs = sh(gl.FRAGMENT_SHADER, FS);
-  if (!vs || !fs) { cv.style.display = 'none'; return; }
-  var prog = gl.createProgram();
-  gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
-  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { cv.style.display = 'none'; return; }
-  gl.useProgram(prog);
-
-  /* subdivided plane so the curve is smooth, not faceted */
-  var N = 48, verts = [], idx = [];
-  for (var y = 0; y <= N; y++) for (var x = 0; x <= N; x++) verts.push(x / N * 2 - 1, y / N * 2 - 1);
-  for (var y2 = 0; y2 < N; y2++) for (var x2 = 0; x2 < N; x2++) {
-    var a = y2 * (N + 1) + x2, b = a + 1, c = a + N + 1, d = c + 1;
-    idx.push(a, b, c, b, d, c);
-  }
-  var vb = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, vb);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(verts), gl.STATIC_DRAW);
-  var loc = gl.getAttribLocation(prog, 'p');
-  gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-  var ib = gl.createBuffer();
-  gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, ib);
-  gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(idx), gl.STATIC_DRAW);
-
-  var uMVP = gl.getUniformLocation(prog, 'mvp'),
-      uBend = gl.getUniformLocation(prog, 'bend'),
-      uCover = gl.getUniformLocation(prog, 'cover');
-
-  /* texture: the hero photo (1x1 placeholder until it decodes) */
-  var tex = gl.createTexture();
-  gl.bindTexture(gl.TEXTURE_2D, tex);
-  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, 1, 1, 0, gl.RGB, gl.UNSIGNED_BYTE, new Uint8Array([20, 45, 26]));
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-
-  var img = new Image(), ready = false, iw = 1, ih = 1;
-  img.onload = function () {
-    iw = img.naturalWidth; ih = img.naturalHeight;
-    gl.bindTexture(gl.TEXTURE_2D, tex);
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
-    ready = true;
-  };
-  img.src = 'assets/hero.jpg';
-
-  /* pointer / tilt, smoothed */
-  var tx = 0, ty = 0, cx = 0, cy = 0;
-  addEventListener('pointermove', function (e) {
-    tx = (e.clientX / innerWidth - 0.5) * 2; ty = (e.clientY / innerHeight - 0.5) * 2;
-  }, { passive: true });
-  addEventListener('deviceorientation', function (e) {
-    if (e.gamma == null) return;
-    tx = Math.max(-1, Math.min(1, e.gamma / 30)); ty = Math.max(-1, Math.min(1, (e.beta - 45) / 30));
-  }, { passive: true });
-
-  function mul(a, b) { /* 4x4 */
-    var o = new Float32Array(16);
-    for (var i = 0; i < 4; i++) for (var j = 0; j < 4; j++) {
-      var s = 0; for (var k = 0; k < 4; k++) s += a[k * 4 + j] * b[i * 4 + k];
-      o[i * 4 + j] = s;
-    }
-    return o;
-  }
-  function persp(f, asp, n, fa) {
-    var t = 1 / Math.tan(f / 2);
-    return new Float32Array([t / asp,0,0,0, 0,t,0,0, 0,0,(fa+n)/(n-fa),-1, 0,0,2*fa*n/(n-fa),0]);
-  }
-  function rotY(a){var c=Math.cos(a),s=Math.sin(a);return new Float32Array([c,0,-s,0, 0,1,0,0, s,0,c,0, 0,0,0,1]);}
-  function rotX(a){var c=Math.cos(a),s=Math.sin(a);return new Float32Array([1,0,0,0, 0,c,s,0, 0,-s,c,0, 0,0,0,1]);}
-  function trans(x,y,z){return new Float32Array([1,0,0,0, 0,1,0,0, 0,0,1,0, x,y,z,1]);}
-
-  function resize() {
-    var dpr = Math.min(devicePixelRatio || 1, 2);
-    var w = cv.clientWidth, h = cv.clientHeight;
-    if (cv.width !== w * dpr || cv.height !== h * dpr) {
-      cv.width = w * dpr; cv.height = h * dpr;
-      gl.viewport(0, 0, cv.width, cv.height);
-    }
-  }
-
-  var start = performance.now();
-  function frame(now) {
-    resize();
-    var asp = cv.clientWidth / Math.max(1, cv.clientHeight);
-    cx += (tx - cx) * 0.045; cy += (ty - cy) * 0.045;      /* easing */
-    var t = (now - start) / 1000;
-
-    /* plane is scaled to fill the frame at this camera distance */
-    var dist = 2.15;
-    var P = persp(50 * Math.PI / 180, asp, 0.1, 12);
-    var M = mul(trans(0, 0, -dist), mul(rotY(cx * 0.10 + Math.sin(t * 0.18) * 0.012),
-                                        rotX(-cy * 0.07 + Math.cos(t * 0.15) * 0.010)));
-    /* Oversize the plane so the curve + tilt can never expose an edge.
-       Visible half-height at this distance is dist*tan(fov/2) ~= 1.0, and the
-       bend pushes the rim away from camera, so we carry a healthy margin. */
-    var S = 1.85;
-    var fill = new Float32Array([asp * S,0,0,0, 0,S,0,0, 0,0,1,0, 0,0,0,1]);
-    gl.uniformMatrix4fv(uMVP, false, mul(P, mul(M, fill)));
-    gl.uniform1f(uBend, 0.10);
-
-    /* object-fit: cover maths for the texture */
-    var pa = asp, ia = iw / ih, sx = 1, sy = 1;
-    if (pa > ia) { sy = ia / pa; } else { sx = pa / ia; }
-    gl.uniform2f(uCover, sx, sy);
-
-    gl.clearColor(0.051, 0.122, 0.071, 1);
-    gl.clear(gl.COLOR_BUFFER_BIT);
-    if (ready) gl.drawElements(gl.TRIANGLES, idx.length, gl.UNSIGNED_SHORT, 0);
-    requestAnimationFrame(frame);
-  }
-  requestAnimationFrame(frame);
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { e.isIntersecting ? play(e.target) : stop(e.target); });
+  }, { threshold: 0.35 });
+  reels.forEach(function (r) { io.observe(r); });
 })();
 </script>
 
