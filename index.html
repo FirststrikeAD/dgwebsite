@@ -72,7 +72,9 @@
     animation:rise .9s cubic-bezier(.2,.7,.2,1) .15s forwards}
   @keyframes rise{to{opacity:1;transform:none}}
   .hero h1{font-size:clamp(40px,7.2vw,88px);line-height:1.02;letter-spacing:-.01em;max-width:15ch}
-  .hero h1 em{font-style:italic;color:var(--pink-soft)}
+  .hero h1 em{font-style:italic}
+  .hero h1 .d{color:var(--green-bright)}
+  .hero h1 .g{color:var(--pink)}
   .hero .lead{margin-top:22px;color:#d7e2d6}
   .hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
   .hero .credit{margin-top:28px;font-size:13px;color:var(--muted);display:flex;align-items:center;gap:9px}
@@ -155,6 +157,7 @@
 
   /* testimonials */
   .quotes{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .quotes:has(> .quote:only-child){grid-template-columns:1fr;max-width:760px;margin:0 auto}
   .quote{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px}
   .quote p{font-family:var(--serif);font-size:19px;line-height:1.5;color:var(--cream);margin:0 0 16px}
   .quote .by{font-size:13px;color:var(--muted)}
@@ -202,8 +205,8 @@
 <header class="hero" id="top">
   <div class="wrap inner">
     <p class="eyebrow">Metro Atlanta &middot; Real Estate Media</p>
-    <h1>Listings that <em>defy gravity.</em></h1>
-    <p class="lead">Photography, cinematic video, drone, and 3D tours that make Metro&nbsp;Atlanta homes rise to the top of the feed &mdash; booked online in minutes, edited to sell.</p>
+    <h1>Listings that <em><span class="d">defy</span> <span class="g">gravity.</span></em></h1>
+    <p class="lead">Photography, cinematic video, drone, and 3D tours that make Metro&nbsp;Atlanta homes rise to the top of the feed. Booked online in minutes, edited to sell.</p>
     <div class="cta">
       <a class="btn btn-pink" href="https://book.deflyinggravity.com/order/dfg/real-estate-media">Book a shoot</a>
       <a class="btn btn-ghost" href="https://www.instagram.com/a_adrian_d">See the work</a>
@@ -220,7 +223,7 @@
     </div>
     <div>
       <p>DeFlying Gravity is a Metro Atlanta real estate media company led by Adrian McRae. From MLS photo sets to full cinematic tours, we handle the media so you can handle the deal.</p>
-      <p>Book any service online in about a minute, get your gallery back fast, and keep your cash flow easy &mdash; every listing can be <strong style="color:var(--green-bright)">$0 due at booking, paid when it closes.</strong></p>
+      <p>Book any service online in about a minute, get your gallery back fast, and keep your cash flow easy. Every listing can be <strong style="color:var(--green-bright)">$0 due at booking, paid when it closes.</strong></p>
     </div>
   </div>
 </section>
@@ -234,7 +237,7 @@
       </div>
     </div>
     <div class="cards">
-      <div class="card"><div class="n">01</div><h3>Photography</h3><p>Bright, true-to-life MLS photo sets &mdash; HDR-blended and hand-edited to sell.</p></div>
+      <div class="card"><div class="n">01</div><h3>Photography</h3><p>Bright, true-to-life MLS photo sets. HDR-blended and hand-edited to sell.</p></div>
       <div class="card"><div class="n">02</div><h3>Video</h3><p>Vertical social reels and cinematic walkthroughs built for the scroll.</p></div>
       <div class="card"><div class="n">03</div><h3>Drone &amp; Aerial</h3><p>Coverage from a licensed drone pilot that frames the whole property and its setting.</p></div>
       <div class="card"><div class="n">04</div><h3>3D Tours &amp; Floor Plans</h3><p>Matterport &amp; Zillow 3D tours plus measured floor plans buyers can walk.</p></div>
@@ -322,7 +325,7 @@
         <a class="btn btn-ghost" href="https://book.deflyinggravity.com/order/dfg/real-estate-media">Book</a>
       </div>
     </div>
-    <p class="price-note">Every package can be <b>$0 due at booking</b> &mdash; pay when the listing closes.</p>
+    <p class="price-note">Every package can be <b>$0 due at booking</b>. Pay when the listing closes.</p>
   </div>
 </section>
 
@@ -349,13 +352,9 @@
     <div class="quotes">
       <div class="quote">
         <p>&ldquo;He is an expert. I highly recommend. I called him this morning and he was able to get my listing&rsquo;s photos the same day. Great service.&rdquo;</p>
-        <div class="by">&mdash; Julian Zamora, Century 21 &middot; <span style="color:var(--green-bright)">via Google</span></div>
+        <div class="by">Julian Zamora, Century 21 &middot; <span style="color:var(--green-bright)">via Google</span></div>
       </div>
-      <div class="quote">
-        <span class="ph">Placeholder &mdash; add another review</span>
-        <p>&ldquo;A second client quote can go here whenever you have one &mdash; just send it over.&rdquo;</p>
-        <div class="by">&mdash; Agent name, Brokerage</div>
-      </div>
+
     </div>
   </div>
 </section>
