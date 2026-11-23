@@ -1,0 +1,1072 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="color-scheme" content="light" />
+<link rel="icon" href="data:," />
+<title>Black Friday Media Credit Sale — DeFLYING GRAVITY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    /* DeFLYING GRAVITY brand: vivid logo green + black, kept restrained */
+    --paper:#F7FAF3;
+    --paper-2:#EFF6EA;
+    --ink:#A83266;
+    --ink-soft:#7A4459;
+    --green:#1E7D2B;
+    --green-dark:#0E3D17;
+    --green-mid:#2E9E35;
+    --brand:#2E9E35;
+    --brand-bright:#3FB53A;
+    --pink:#E15A92;
+    --pink-soft:#F2A0C0;
+    --pink-dark:#C73E7A;
+    --mint:#DFF2D8;
+    --mint-pale:#EAF6E4;
+    --mint-soft:#E2F2DB;
+    --line:#DEE9D8;
+    --line-dark:#C6DCC0;
+    --white:#FFFFFF;
+    --serif:"Fraunces", Georgia, "Times New Roman", serif;
+    --sans:"Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--green)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .narrow{max-width:760px}
+
+  /* ---------- LANGUAGE TOGGLE ---------- */
+  .lang-toggle{
+    position:fixed;
+    top:16px;
+    right:16px;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    gap:2px;
+    background:var(--white);
+    border:1px solid var(--line-dark);
+    border-radius:999px;
+    padding:4px;
+    box-shadow:0 4px 16px rgba(14,61,23,.16);
+  }
+  .lang-btn{
+    appearance:none;
+    -webkit-appearance:none;
+    border:0;
+    background:transparent;
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:13.5px;
+    letter-spacing:.06em;
+    line-height:1;
+    padding:9px 13px;
+    min-height:36px;
+    border-radius:999px;
+    cursor:pointer;
+    color:var(--green-dark);
+  }
+  .lang-btn.is-active{
+    background:var(--green);
+    color:#fff;
+  }
+  .lang-btn:focus-visible{
+    outline:2px solid var(--green-dark);
+    outline-offset:2px;
+  }
+  .lang-sep{
+    color:#9AB894;
+    font-weight:700;
+    font-size:13px;
+    user-select:none;
+  }
+
+  /* ---------- BRAND WORDMARK ---------- */
+  .wordmark{
+    font-weight:900;
+    letter-spacing:.01em;
+    line-height:1;
+    white-space:nowrap;
+  }
+  .wordmark .wm-fly{color:var(--brand)}
+  .wordmark .wm-grav{color:var(--pink)}
+  .brand-line{
+    margin:0 0 20px;
+    font-size:clamp(26px,4.2vw,36px);
+  }
+  .brand-line-cta{
+    margin:0 0 18px;
+    font-size:clamp(24px,3.8vw,32px);
+    text-align:center;
+  }
+  .footer-brand{
+    font-size:15px;
+    letter-spacing:.01em;
+  }
+  .footer-brand .wm-fly{color:var(--green)}
+  .footer-brand .wm-grav{color:var(--pink-dark)}
+  .wordmark-on-dark .wm-fly{color:#7ED957}
+  .wordmark-on-dark .wm-grav{color:var(--pink-soft)}
+  .brand-line-banner{
+    margin:0 0 10px;
+    font-size:clamp(19px,2.8vw,24px);
+    text-align:center;
+  }
+  .banner p.wordmark{
+    font-family:var(--sans);
+    font-size:clamp(19px,2.8vw,24px);
+    font-weight:900;
+    letter-spacing:.02em;
+    margin:0 0 10px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--mint);
+    padding:56px 0 0;
+  }
+  .eyebrow{
+    font-size:12.5px;
+    font-weight:800;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--green);
+    margin:0 0 20px;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(42px,7.2vw,76px);
+    line-height:1.02;
+    letter-spacing:-.01em;
+    margin:0 0 22px;
+    max-width:820px;
+  }
+  h1 .accent{color:var(--green);display:block}
+  .subhead{
+    font-size:clamp(17px,2.4vw,20px);
+    line-height:1.5;
+    color:#5C2A42;
+    max-width:620px;
+    margin:0 0 28px;
+  }
+  .restriction{
+    background:var(--white);
+    border:1px solid rgba(14,61,23,.10);
+    border-left:6px solid var(--brand);
+    border-radius:10px;
+    padding:16px 20px;
+    font-weight:700;
+    font-size:16px;
+    max-width:640px;
+    box-shadow:0 2px 10px rgba(14,61,23,.06);
+  }
+  .countdown-label{
+    margin:34px 0 14px;
+    font-weight:700;
+    font-size:16px;
+    color:var(--green-dark);
+  }
+  .countdown{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    padding-bottom:52px;
+  }
+  .cd-box{
+    background:var(--white);
+    border-radius:14px;
+    width:92px;
+    padding:16px 8px 13px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(14,61,23,.08);
+  }
+  .cd-num{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:36px;
+    line-height:1;
+    display:block;
+    font-variant-numeric:tabular-nums;
+  }
+  .cd-unit{
+    display:block;
+    margin-top:8px;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--green-mid);
+  }
+  .cd-done{
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:22px;
+    color:var(--green-dark);
+    padding-bottom:52px;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:14px 18px;
+    margin-top:22px;
+  }
+  .book-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:52px;
+    background:var(--green);
+    color:#fff !important;
+    text-decoration:none;
+    font-weight:800;
+    font-size:16.5px;
+    border-radius:999px;
+    padding:13px 26px;
+    border-bottom:none !important;
+    transition:background .15s ease;
+  }
+  .book-btn:hover,.book-btn:focus-visible{background:var(--green-dark)}
+  .book-btn-outline{
+    background:var(--white);
+    color:var(--green-dark) !important;
+    border:2px solid var(--green);
+  }
+  .book-btn-outline:hover,.book-btn-outline:focus-visible{background:var(--mint-pale)}
+  .hero-actions .book-note{
+    font-size:15.5px;
+    font-weight:600;
+    color:#5C2A42;
+  }
+  .banner-book{
+    display:inline-block;
+    margin-top:14px;
+    color:#fff !important;
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:16px;
+    text-decoration:none;
+    border-bottom:2px solid rgba(255,255,255,.65);
+    padding-bottom:2px;
+  }
+  .final-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    justify-content:center;
+    margin:26px 0 20px;
+  }
+
+  /* ---------- GRADIENT BANNER ---------- */
+  .banner{
+    background:var(--green-dark);
+    color:#fff;
+    text-align:center;
+    padding:26px 24px;
+  }
+  .banner p{
+    margin:0;
+    font-family:var(--serif);
+    font-weight:700;
+    font-size:clamp(24px,4vw,34px);
+    line-height:1.15;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:64px 0 8px}
+  .kicker{
+    font-size:12.5px;
+    font-weight:800;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--green);
+    margin:0 0 12px;
+  }
+  h2{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(34px,5.4vw,52px);
+    line-height:1.05;
+    margin:0 0 14px;
+    letter-spacing:-.01em;
+  }
+  .intro{
+    font-size:18px;
+    color:var(--ink-soft);
+    max-width:600px;
+    margin:0 0 26px;
+  }
+  .restriction-inline{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-left:6px solid var(--brand);
+    border-radius:10px;
+    padding:14px 18px;
+    font-weight:700;
+    font-size:15.5px;
+    max-width:640px;
+    margin:0 0 30px;
+  }
+
+  /* ---------- PRICING ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+  .card{
+    background:var(--white);
+    border:1px solid var(--line-dark);
+    border-radius:16px;
+    padding:26px 24px 24px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+  }
+  .card .pay{
+    font-size:15px;
+    color:#7A5568;
+    font-weight:600;
+    margin:0 0 6px;
+  }
+  .card .get{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:46px;
+    line-height:1;
+    margin:0 0 12px;
+  }
+  .card .free-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin:0 0 22px;
+  }
+  .card .free{
+    color:var(--green);
+    font-weight:800;
+    font-size:16px;
+  }
+  .pct{
+    background:var(--mint-pale);
+    color:var(--green);
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.06em;
+    padding:5px 10px;
+    border-radius:999px;
+  }
+  .buy{
+    margin-top:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:52px;
+    background:var(--green);
+    color:#fff;
+    text-decoration:none;
+    font-weight:700;
+    font-size:16.5px;
+    border-radius:999px;
+    padding:12px 20px;
+    transition:background .15s ease;
+  }
+  .buy:hover,.buy:focus-visible{background:var(--green-dark)}
+  .card.best{
+    border:2px solid var(--brand);
+    box-shadow:0 10px 28px rgba(46,158,53,.14);
+  }
+  .best-tag{
+    position:absolute;
+    top:-14px;
+    left:22px;
+    background:var(--ink);
+    color:#fff;
+    font-size:11.5px;
+    font-weight:800;
+    letter-spacing:.1em;
+    padding:6px 14px;
+    border-radius:999px;
+  }
+  .under-note{
+    margin:22px 0 0;
+    font-weight:700;
+    font-size:15.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+    margin-top:8px;
+  }
+  .step{
+    background:var(--mint-soft);
+    border-radius:16px;
+    padding:26px 24px;
+  }
+  .step-num{
+    width:40px;height:40px;
+    border-radius:50%;
+    background:var(--green);
+    color:#fff;
+    font-weight:800;
+    font-size:17px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:16px;
+  }
+  .step h3{
+    margin:0 0 8px;
+    font-size:19px;
+    font-weight:800;
+    line-height:1.25;
+  }
+  .step p{margin:0;font-size:16px;color:#6B4257}
+  .step p a{font-weight:700}
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:28px 0 16px;
+  }
+  .chip{
+    background:var(--white);
+    border:1px solid var(--line-dark);
+    border-radius:999px;
+    padding:9px 18px;
+    font-weight:700;
+    font-size:15px;
+  }
+  .fine-line{
+    font-size:15px;
+    color:var(--ink-soft);
+    margin:0;
+  }
+
+  /* ---------- CONTEST ---------- */
+  .contest{
+    background:var(--mint-pale);
+    border:1px solid #CBE7C2;
+    border-radius:22px;
+    padding:44px 40px;
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:1.35fr .65fr;
+    gap:32px;
+    align-items:center;
+  }
+  .contest .kicker{color:var(--green)}
+  .contest h2{margin-bottom:12px}
+  .contest .lead{
+    font-size:18px;
+    margin:0 0 22px;
+    color:#6B4257;
+    max-width:480px;
+  }
+  .contest-steps{
+    list-style:none;
+    margin:0 0 22px;
+    padding:0;
+    display:grid;
+    gap:10px;
+    font-size:17px;
+    font-weight:600;
+  }
+  .contest-steps .n{
+    display:inline-flex;
+    width:28px;height:28px;
+    border-radius:50%;
+    background:var(--green);
+    color:#fff;
+    font-size:14px;
+    font-weight:800;
+    align-items:center;justify-content:center;
+    margin-right:10px;
+    vertical-align:-7px;
+  }
+  .contest-steps a{font-weight:800}
+  .contest .winner{
+    margin:0;
+    font-weight:700;
+    color:var(--green);
+    font-size:16px;
+  }
+  .contest-prize{
+    text-align:center;
+  }
+  .contest-prize .amount{
+    font-family:var(--serif);
+    font-weight:900;
+    font-size:clamp(56px,8vw,88px);
+    line-height:1;
+    color:var(--green);
+    display:block;
+  }
+  .contest-prize .in-credit{
+    display:block;
+    margin-top:10px;
+    font-weight:800;
+    letter-spacing:.12em;
+    font-size:12.5px;
+    text-transform:uppercase;
+    color:var(--green);
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-list{display:grid;gap:12px;margin-top:10px}
+  details.faq{
+    background:var(--white);
+    border:1px solid var(--line-dark);
+    border-radius:14px;
+    overflow:hidden;
+  }
+  details.faq summary{
+    list-style:none;
+    cursor:pointer;
+    padding:20px 22px;
+    font-weight:800;
+    font-size:17px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    min-height:56px;
+  }
+  details.faq summary::-webkit-details-marker{display:none}
+  details.faq summary::before{
+    content:"";
+    flex:0 0 auto;
+    width:0;height:0;
+    border-top:6px solid transparent;
+    border-bottom:6px solid transparent;
+    border-left:9px solid var(--ink);
+    transition:transform .18s ease;
+  }
+  details.faq[open ] summary::before{transform:rotate(90deg)}
+  details.faq .answer{
+    padding:0 22px 22px 43px;
+    font-size:16.5px;
+    color:var(--ink-soft);
+    max-width:640px;
+  }
+  details.faq .answer a{font-weight:700}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:var(--mint);
+    margin-top:72px;
+    padding:72px 24px;
+    text-align:center;
+  }
+  .final-cta h2{
+    font-size:clamp(32px,5.4vw,50px);
+    max-width:820px;
+    margin:0 auto 16px;
+  }
+  .final-cta p{
+    margin:0;
+    font-size:18px;
+    color:#6B4257;
+  }
+  .final-cta a{
+    color:var(--green-dark);
+    font-weight:700;
+    text-decoration:none;
+    border-bottom:2px solid rgba(14,61,23,.35);
+  }
+
+  footer{
+    padding:30px 24px 40px;
+    text-align:center;
+    font-size:14.5px;
+    color:#7A5568;
+  }
+  footer a{color:#7A5568;font-weight:600;text-decoration:none}
+
+  @media (max-width:820px){
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:1fr}
+    .contest{grid-template-columns:1fr;padding:34px 26px}
+    .contest-prize{text-align:left}
+    section{padding:52px 0 4px}
+  }
+  @media (max-width:540px){
+    .grid{grid-template-columns:1fr}
+    .cd-box{width:calc(25% - 9px);min-width:70px;padding:14px 4px 11px}
+    .cd-num{font-size:28px}
+    .hero{padding-top:86px}
+    .lang-toggle{top:12px;right:12px}
+    body{font-size:16px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+  <!-- LANGUAGE TOGGLE -->
+  <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+    <button type="button" class="lang-btn is-active" id="lang-en" aria-pressed="true">ENG</button>
+    <span class="lang-sep" aria-hidden="true">/</span>
+    <button type="button" class="lang-btn" id="lang-es" aria-pressed="false">ESP</button>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <p class="wordmark brand-line" aria-label="DeFLYING GRAVITY"><span class="wm-fly">DeFLYING</span> <span class="wm-grav">GRAVITY</span></p>
+      <p class="eyebrow" data-i18n="eyebrow">Black Friday Sale · Nov 23 to Dec 14 · For Metro Atlanta Realtors</p>
+      <h1 data-i18n="h1">Stock up on listing media. <span class="accent">Get up to 20% free.</span></h1>
+      <p class="subhead" data-i18n="subhead">Prepay for your 2027 listing photos, video, drone and more, and we&rsquo;ll add bonus credit on top. Your credit never expires.</p>
+      <div class="restriction" data-i18n="restriction">For listing media only. One purchase per person.</div>
+
+      <div class="hero-actions">
+        <a class="book-btn" href="https://book.deflyinggravity.com" data-i18n="bookShoot">Book a Shoot &rarr;</a>
+      </div>
+
+      <p class="countdown-label" id="cd-label" data-i18n="cdLabel">Sale ends Monday, Dec 14 at midnight.</p>
+      <div class="countdown" id="countdown" role="timer" aria-label="Time left in the sale" data-i18n-aria="cdAria">
+        <div class="cd-box"><span class="cd-num" id="cd-days">--</span><span class="cd-unit" data-i18n="cdDays">Days</span></div>
+        <div class="cd-box"><span class="cd-num" id="cd-hours">--</span><span class="cd-unit" data-i18n="cdHours">Hours</span></div>
+        <div class="cd-box"><span class="cd-num" id="cd-min">--</span><span class="cd-unit" data-i18n="cdMin">Min</span></div>
+        <div class="cd-box"><span class="cd-num" id="cd-sec">--</span><span class="cd-unit" data-i18n="cdSec">Sec</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- GRADIENT BANNER -->
+  <div class="banner">
+    <p class="wordmark wordmark-on-dark brand-line-banner" aria-label="DeFLYING GRAVITY"><span class="wm-fly">DeFLYING</span> <span class="wm-grav">GRAVITY</span></p>
+    <p data-i18n="bannerLine">$5,000 gets you $6,000. No catch.</p>
+    <a class="banner-book" href="https://book.deflyinggravity.com" data-i18n="bannerBook">Book your next shoot &rarr;</a>
+  </div>
+
+  <!-- PRICING -->
+  <section aria-labelledby="pricing-h">
+    <div class="wrap">
+      <p class="kicker" data-i18n="pricingKicker">Pick Your Amount</p>
+      <h2 id="pricing-h" data-i18n="pricingH">Choose Your Credit</h2>
+      <p class="intro" data-i18n="pricingIntro">Choose a tier, check out securely, and we&rsquo;ll load your credit within one business day.</p>
+      <div class="restriction-inline" data-i18n="restriction">For listing media only. One purchase per person.</div>
+
+      <div class="grid">
+        <article class="card">
+          <p class="pay" data-i18n="pay500">Pay $500</p>
+          <p class="get">$550</p>
+          <p class="free-row"><span class="free" data-i18n="free50">$50 FREE</span><span class="pct" data-i18n="pct10">10% FREE</span></p>
+          <a class="buy" href="https://buy.stripe.com/6oUcN58NeguD8HM5Uo2Ji00" data-i18n="buy500">Buy $500</a>
+        </article>
+
+        <article class="card">
+          <p class="pay" data-i18n="pay1000">Pay $1,000</p>
+          <p class="get">$1,150</p>
+          <p class="free-row"><span class="free" data-i18n="free150">$150 FREE</span><span class="pct" data-i18n="pct15">15% FREE</span></p>
+          <a class="buy" href="https://buy.stripe.com/5kQ7sLaVmguDcY22Ic2Ji01" data-i18n="buy1000">Buy $1,000</a>
+        </article>
+
+        <article class="card">
+          <p class="pay" data-i18n="pay2000">Pay $2,000</p>
+          <p class="get">$2,300</p>
+          <p class="free-row"><span class="free" data-i18n="free300">$300 FREE</span><span class="pct" data-i18n="pct15">15% FREE</span></p>
+          <a class="buy" href="https://buy.stripe.com/00w00jd3udircY2ciM2Ji02" data-i18n="buy2000">Buy $2,000</a>
+        </article>
+
+        <article class="card">
+          <p class="pay" data-i18n="pay3000">Pay $3,000</p>
+          <p class="get">$3,450</p>
+          <p class="free-row"><span class="free" data-i18n="free450">$450 FREE</span><span class="pct" data-i18n="pct15">15% FREE</span></p>
+          <a class="buy" href="https://buy.stripe.com/8x2aEX8Ne0vF1fkciM2Ji03" data-i18n="buy3000">Buy $3,000</a>
+        </article>
+
+        <article class="card">
+          <p class="pay" data-i18n="pay4000">Pay $4,000</p>
+          <p class="get">$4,600</p>
+          <p class="free-row"><span class="free" data-i18n="free600">$600 FREE</span><span class="pct" data-i18n="pct15">15% FREE</span></p>
+          <a class="buy" href="https://buy.stripe.com/fZudR9d3u5PZ8HMeqU2Ji04" data-i18n="buy4000">Buy $4,000</a>
+        </article>
+
+        <article class="card best">
+          <span class="best-tag" data-i18n="bestTag">BEST VALUE</span>
+          <p class="pay" data-i18n="pay5000">Pay $5,000</p>
+          <p class="get">$6,000</p>
+          <p class="free-row"><span class="free" data-i18n="free1000">$1,000 FREE</span><span class="pct" data-i18n="pct20">20% FREE</span></p>
+          <a class="buy" href="https://buy.stripe.com/fZu6oH3sU7Y79LQ2Ic2Ji05" data-i18n="buy5000">Buy $5,000</a>
+        </article>
+      </div>
+
+      <p class="under-note" data-i18n="underNote">Listing media only. One purchase per person. Already have credit? <a href="https://book.deflyinggravity.com">Book your shoot at book.deflyinggravity.com &rarr;</a></p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section aria-labelledby="how-h">
+    <div class="wrap">
+      <p class="kicker" data-i18n="howKicker">How It Works</p>
+      <h2 id="how-h" data-i18n="howH">Three easy steps.</h2>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num" aria-hidden="true">1</div>
+          <h3 data-i18n="step1t">Buy your credit</h3>
+          <p data-i18n="step1p">Pick a tier above and check out securely in under a minute.</p>
+        </div>
+        <div class="step">
+          <div class="step-num" aria-hidden="true">2</div>
+          <h3 data-i18n="step2t">We load your balance</h3>
+          <p data-i18n="step2p">Your credit (including the bonus) is added within one business day.</p>
+        </div>
+        <div class="step">
+          <div class="step-num" aria-hidden="true">3</div>
+          <h3 data-i18n="step3t">Use it on any listing</h3>
+          <p data-i18n="step3p">Book photos, video and drone as usual at <a href="https://book.deflyinggravity.com">book.deflyinggravity.com</a> and we apply your credit to your order.</p>
+        </div>
+      </div>
+
+      <div class="chips" aria-label="Services you can use credit on" data-i18n-aria="chipsAria">
+        <span class="chip" data-i18n="chipPhotos">Photos</span>
+        <span class="chip" data-i18n="chipVideo">Video</span>
+        <span class="chip" data-i18n="chipDrone">Drone</span>
+        <span class="chip" data-i18n="chipTwilight">Twilight</span>
+        <span class="chip" data-i18n="chipFloor">Floor Plans</span>
+        <span class="chip" data-i18n="chip360">360 Tours</span>
+      </div>
+      <p class="fine-line" data-i18n="restrictionShort">Listing media only. One purchase per person.</p>
+
+      <!-- CONTEST -->
+      <div class="contest">
+        <div>
+          <p class="kicker" data-i18n="contestKicker">A $1,000 Contest</p>
+          <h2 data-i18n="contestH">Post. Tag. Win $1,000.</h2>
+          <p class="lead" data-i18n="contestLead">Buy any tier and post by Dec 7, one winner takes home $1,000 in extra credit.</p>
+          <ul class="contest-steps">
+            <li><span class="n" aria-hidden="true">1</span><span data-i18n="contestStep1">Post a story or reel</span></li>
+            <li><span class="n" aria-hidden="true">2</span><span data-i18n="contestStep2">Tag <a href="https://www.instagram.com/a_adrian_d">@a_adrian_d</a></span></li>
+            <li><span class="n" aria-hidden="true">3</span><span data-i18n="contestStep3">One entry per purchase</span></li>
+          </ul>
+          <p class="winner" data-i18n="contestWinner">Winner announced Monday, Dec 7.</p>
+        </div>
+        <div class="contest-prize" aria-hidden="true">
+          <span class="amount">$1,000</span>
+          <span class="in-credit" data-i18n="contestPrizeLabel">In Extra Credit</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section aria-labelledby="faq-h">
+    <div class="wrap">
+      <p class="kicker" data-i18n="faqKicker">Questions</p>
+      <h2 id="faq-h" data-i18n="faqH">Good to Know.</h2>
+
+      <div class="faq-list">
+        <details class="faq">
+          <summary data-i18n="faq1q">Do the credits expire?</summary>
+          <div class="answer" data-i18n="faq1a">Never. Use them whenever you have a listing.</div>
+        </details>
+
+        <details class="faq">
+          <summary data-i18n="faq2q">How do I use my credit?</summary>
+          <div class="answer" data-i18n="faq2a">Book like you always do at <a href="https://book.deflyinggravity.com">book.deflyinggravity.com</a>. We apply your credit to your order, so you pay nothing until your balance runs out.</div>
+        </details>
+
+        <details class="faq">
+          <summary data-i18n="faq3q">Do I still get my usual pricing?</summary>
+          <div class="answer" data-i18n="faq3a">Yes. Credits are spent at your normal booking prices.</div>
+        </details>
+
+        <details class="faq">
+          <summary data-i18n="faq4q">What can I use it for?</summary>
+          <div class="answer" data-i18n="faq4a">Listing media only: photos, video, drone, twilight, floor plans and 360 tours.</div>
+        </details>
+
+        <details class="faq">
+          <summary data-i18n="faq5q">Is this a tax write-off?</summary>
+          <div class="answer" data-i18n="faq5a">We can&rsquo;t give tax advice, so check with your accountant. Many agents prepay before Dec 31.</div>
+        </details>
+
+        <details class="faq">
+          <summary data-i18n="faq6q">Questions?</summary>
+          <div class="answer" data-i18n="faq6a">Text or call us at <a href="tel:+18636044376">(863) 604-4376</a>. A real person will help you pick.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final-cta">
+    <p class="wordmark brand-line-cta" aria-label="DeFLYING GRAVITY"><span class="wm-fly">DeFLYING</span> <span class="wm-grav">GRAVITY</span></p>
+    <h2 data-i18n="finalH">Your 2027 listings, already taken care of.</h2>
+    <p data-i18n="finalP">Ready to book? Head to the booking page and we&rsquo;ll apply your credit.</p>
+    <div class="final-actions">
+      <a class="book-btn" href="https://book.deflyinggravity.com" data-i18n="finalBtn">Book Now at book.deflyinggravity.com</a>
+    </div>
+    <p data-i18n="finalQ">Questions? Text or call us at <a href="tel:+18636044376">(863) 604-4376</a>.</p>
+  </div>
+
+  <footer>
+    <span class="wordmark footer-brand" aria-label="DeFLYING GRAVITY"><span class="wm-fly">DeFLYING</span> <span class="wm-grav">GRAVITY</span></span> &middot; <span data-i18n="footerMedia">Metro Atlanta Real Estate Media</span> &middot; <a href="https://book.deflyinggravity.com" data-i18n="footerBook">Book Online</a> &middot; <a href="tel:+18636044376">(863) 604-4376</a>
+  </footer>
+
+<script>
+  // ---------- LANGUAGE ----------
+  var I18N = {
+    en: {
+      docTitle: "Black Friday Media Credit Sale \u2014 DeFLYING GRAVITY",
+      eyebrow: "Black Friday Sale \u00B7 Nov 23 to Dec 14 \u00B7 For Metro Atlanta Realtors",
+      h1: "Stock up on listing media. <span class=\"accent\">Get up to 20% free.</span>",
+      subhead: "Prepay for your 2027 listing photos, video, drone and more, and we\u2019ll add bonus credit on top. Your credit never expires.",
+      restriction: "For listing media only. One purchase per person.",
+      restrictionShort: "Listing media only. One purchase per person.",
+      bookShoot: "Book a Shoot \u2192",
+      cdLabel: "Sale ends Monday, Dec 14 at midnight.",
+      cdEnded: "This sale has ended.",
+      cdAria: "Time left in the sale",
+      cdDays: "Days",
+      cdHours: "Hours",
+      cdMin: "Min",
+      cdSec: "Sec",
+      bannerLine: "$5,000 gets you $6,000. No catch.",
+      bannerBook: "Book your next shoot \u2192",
+      pricingKicker: "Pick Your Amount",
+      pricingH: "Choose Your Credit",
+      pricingIntro: "Choose a tier, check out securely, and we\u2019ll load your credit within one business day.",
+      pay500: "Pay $500",
+      pay1000: "Pay $1,000",
+      pay2000: "Pay $2,000",
+      pay3000: "Pay $3,000",
+      pay4000: "Pay $4,000",
+      pay5000: "Pay $5,000",
+      free50: "$50 FREE",
+      free150: "$150 FREE",
+      free300: "$300 FREE",
+      free450: "$450 FREE",
+      free600: "$600 FREE",
+      free1000: "$1,000 FREE",
+      pct10: "10% FREE",
+      pct15: "15% FREE",
+      pct20: "20% FREE",
+      buy500: "Buy $500",
+      buy1000: "Buy $1,000",
+      buy2000: "Buy $2,000",
+      buy3000: "Buy $3,000",
+      buy4000: "Buy $4,000",
+      buy5000: "Buy $5,000",
+      bestTag: "BEST VALUE",
+      underNote: "Listing media only. One purchase per person. Already have credit? <a href=\"https://book.deflyinggravity.com\">Book your shoot at book.deflyinggravity.com \u2192</a>",
+      howKicker: "How It Works",
+      howH: "Three easy steps.",
+      step1t: "Buy your credit",
+      step1p: "Pick a tier above and check out securely in under a minute.",
+      step2t: "We load your balance",
+      step2p: "Your credit (including the bonus) is added within one business day.",
+      step3t: "Use it on any listing",
+      step3p: "Book photos, video and drone as usual at <a href=\"https://book.deflyinggravity.com\">book.deflyinggravity.com</a> and we apply your credit to your order.",
+      chipsAria: "Services you can use credit on",
+      chipPhotos: "Photos",
+      chipVideo: "Video",
+      chipDrone: "Drone",
+      chipTwilight: "Twilight",
+      chipFloor: "Floor Plans",
+      chip360: "360 Tours",
+      contestKicker: "A $1,000 Contest",
+      contestH: "Post. Tag. Win $1,000.",
+      contestLead: "Buy any tier and post by Dec 7, one winner takes home $1,000 in extra credit.",
+      contestStep1: "Post a story or reel",
+      contestStep2: "Tag <a href=\"https://www.instagram.com/a_adrian_d\">@a_adrian_d</a>",
+      contestStep3: "One entry per purchase",
+      contestWinner: "Winner announced Monday, Dec 7.",
+      contestPrizeLabel: "In Extra Credit",
+      faqKicker: "Questions",
+      faqH: "Good to Know.",
+      faq1q: "Do the credits expire?",
+      faq1a: "Never. Use them whenever you have a listing.",
+      faq2q: "How do I use my credit?",
+      faq2a: "Book like you always do at <a href=\"https://book.deflyinggravity.com\">book.deflyinggravity.com</a>. We apply your credit to your order, so you pay nothing until your balance runs out.",
+      faq3q: "Do I still get my usual pricing?",
+      faq3a: "Yes. Credits are spent at your normal booking prices.",
+      faq4q: "What can I use it for?",
+      faq4a: "Listing media only: photos, video, drone, twilight, floor plans and 360 tours.",
+      faq5q: "Is this a tax write-off?",
+      faq5a: "We can\u2019t give tax advice, so check with your accountant. Many agents prepay before Dec 31.",
+      faq6q: "Questions?",
+      faq6a: "Text or call us at <a href=\"tel:+18636044376\">(863) 604-4376</a>. A real person will help you pick.",
+      finalH: "Your 2027 listings, already taken care of.",
+      finalP: "Ready to book? Head to the booking page and we\u2019ll apply your credit.",
+      finalBtn: "Book Now at book.deflyinggravity.com",
+      finalQ: "Questions? Text or call us at <a href=\"tel:+18636044376\">(863) 604-4376</a>.",
+      footerMedia: "Metro Atlanta Real Estate Media",
+      footerBook: "Book Online"
+    },
+    es: {
+      docTitle: "Venta Black Friday de Cr\u00E9dito para Medios \u2014 DeFLYING GRAVITY",
+      eyebrow: "Venta de Black Friday \u00B7 Del 23 de noviembre al 14 de diciembre \u00B7 Para agentes inmobiliarios del \u00E1rea metropolitana de Atlanta",
+      h1: "Abastece tu cr\u00E9dito para medios de listados. <span class=\"accent\">Recibe hasta un 20% gratis.</span>",
+      subhead: "Paga por adelantado las fotos, el video, el dron y m\u00E1s para tus listados de 2027, y te agregaremos cr\u00E9dito adicional. Tu cr\u00E9dito nunca vence.",
+      restriction: "Solo para medios de listados. Una compra por persona.",
+      restrictionShort: "Solo para medios de listados. Una compra por persona.",
+      bookShoot: "Reserva una sesi\u00F3n \u2192",
+      cdLabel: "La venta termina el lunes 14 de diciembre a la medianoche.",
+      cdEnded: "Esta venta ha terminado.",
+      cdAria: "Tiempo restante de la venta",
+      cdDays: "D\u00EDas",
+      cdHours: "Horas",
+      cdMin: "Min",
+      cdSec: "Seg",
+      bannerLine: "$5,000 te dan $6,000. Sin trucos.",
+      bannerBook: "Reserva tu pr\u00F3xima sesi\u00F3n \u2192",
+      pricingKicker: "Elige tu monto",
+      pricingH: "Elige tu cr\u00E9dito",
+      pricingIntro: "Elige un nivel, paga de forma segura y cargaremos tu cr\u00E9dito dentro de un d\u00EDa laborable.",
+      pay500: "Pagas $500",
+      pay1000: "Pagas $1,000",
+      pay2000: "Pagas $2,000",
+      pay3000: "Pagas $3,000",
+      pay4000: "Pagas $4,000",
+      pay5000: "Pagas $5,000",
+      free50: "$50 GRATIS",
+      free150: "$150 GRATIS",
+      free300: "$300 GRATIS",
+      free450: "$450 GRATIS",
+      free600: "$600 GRATIS",
+      free1000: "$1,000 GRATIS",
+      pct10: "10% GRATIS",
+      pct15: "15% GRATIS",
+      pct20: "20% GRATIS",
+      buy500: "Comprar $500",
+      buy1000: "Comprar $1,000",
+      buy2000: "Comprar $2,000",
+      buy3000: "Comprar $3,000",
+      buy4000: "Comprar $4,000",
+      buy5000: "Comprar $5,000",
+      bestTag: "MEJOR VALOR",
+      underNote: "Solo para medios de listados. Una compra por persona. \u00BFYa tienes cr\u00E9dito? <a href=\"https://book.deflyinggravity.com\">Reserva tu sesi\u00F3n en book.deflyinggravity.com \u2192</a>",
+      howKicker: "C\u00F3mo funciona",
+      howH: "Tres pasos sencillos.",
+      step1t: "Compra tu cr\u00E9dito",
+      step1p: "Elige un nivel arriba y paga de forma segura en menos de un minuto.",
+      step2t: "Cargamos tu saldo",
+      step2p: "Tu cr\u00E9dito (incluido el bono) se agrega dentro de un d\u00EDa laborable.",
+      step3t: "\u00DAsalo en cualquier listado",
+      step3p: "Reserva fotos, video y dron como siempre en <a href=\"https://book.deflyinggravity.com\">book.deflyinggravity.com</a> y aplicamos tu cr\u00E9dito a tu pedido.",
+      chipsAria: "Servicios en los que puedes usar tu cr\u00E9dito",
+      chipPhotos: "Fotos",
+      chipVideo: "Video",
+      chipDrone: "Dron",
+      chipTwilight: "Atardecer",
+      chipFloor: "Planos de planta",
+      chip360: "Tours 360",
+      contestKicker: "Un concurso de $1,000",
+      contestH: "Publica. Etiqueta. Gana $1,000.",
+      contestLead: "Compra cualquier nivel y publica antes del 7 de diciembre: un ganador se llevar\u00E1 $1,000 en cr\u00E9dito extra.",
+      contestStep1: "Publica una historia o un reel",
+      contestStep2: "Etiqueta a <a href=\"https://www.instagram.com/a_adrian_d\">@a_adrian_d</a>",
+      contestStep3: "Una participaci\u00F3n por compra",
+      contestWinner: "El ganador se anunciar\u00E1 el lunes 7 de diciembre.",
+      contestPrizeLabel: "En cr\u00E9dito extra",
+      faqKicker: "Preguntas",
+      faqH: "Lo que debes saber.",
+      faq1q: "\u00BFLos cr\u00E9ditos vencen?",
+      faq1a: "Nunca. \u00DAsalos cuando tengas un listado.",
+      faq2q: "\u00BFC\u00F3mo uso mi cr\u00E9dito?",
+      faq2a: "Reserva como siempre en <a href=\"https://book.deflyinggravity.com\">book.deflyinggravity.com</a>. Aplicamos tu cr\u00E9dito a tu pedido, as\u00ED que no pagas nada hasta que se acabe tu saldo.",
+      faq3q: "\u00BFMantengo mis precios habituales?",
+      faq3a: "S\u00ED. Los cr\u00E9ditos se usan con tus precios normales de reserva.",
+      faq4q: "\u00BFPara qu\u00E9 puedo usarlo?",
+      faq4a: "Solo para medios de listados: fotos, video, dron, atardecer, planos de planta y tours 360.",
+      faq5q: "\u00BFEs deducible de impuestos?",
+      faq5a: "No podemos dar asesor\u00EDa fiscal, as\u00ED que consulta con tu contador. Muchos agentes pagan por adelantado antes del 31 de diciembre.",
+      faq6q: "\u00BFPreguntas?",
+      faq6a: "Env\u00EDanos un mensaje de texto o ll\u00E1manos al <a href=\"tel:+18636044376\">(863) 604-4376</a>. Una persona real te ayudar\u00E1 a elegir.",
+      finalH: "Tus listados de 2027, ya resueltos.",
+      finalP: "\u00BFListo para reservar? Ve a la p\u00E1gina de reservas y aplicaremos tu cr\u00E9dito.",
+      finalBtn: "Reserva ahora en book.deflyinggravity.com",
+      finalQ: "\u00BFPreguntas? Env\u00EDanos un mensaje de texto o ll\u00E1manos al <a href=\"tel:+18636044376\">(863) 604-4376</a>.",
+      footerMedia: "Medios inmobiliarios del \u00E1rea metropolitana de Atlanta",
+      footerBook: "Reserva en l\u00EDnea"
+    }
+  };
+
+  var currentLang = 'en';
+  var saleEnded = false;
+  var btnEn = document.getElementById('lang-en');
+  var btnEs = document.getElementById('lang-es');
+  var label = document.getElementById('cd-label');
+
+  function setLang(lang){
+    currentLang = lang;
+    var dict = I18N[lang];
+    document.documentElement.lang = (lang === 'es') ? 'es' : 'en';
+    document.title = dict.docTitle;
+    var nodes = document.querySelectorAll('[data-i18n]');
+    for (var i = 0; i < nodes.length; i++) {
+      var key = nodes[i].getAttribute('data-i18n');
+      if (dict[key] !== undefined) nodes[i].innerHTML = dict[key];
+    }
+    var ariaNodes = document.querySelectorAll('[data-i18n-aria]');
+    for (var j = 0; j < ariaNodes.length; j++) {
+      var akey = ariaNodes[j].getAttribute('data-i18n-aria');
+      if (dict[akey] !== undefined) ariaNodes[j].setAttribute('aria-label', dict[akey]);
+    }
+    if (saleEnded && label) label.textContent = dict.cdEnded;
+    btnEn.classList.toggle('is-active', lang === 'en');
+    btnEs.classList.toggle('is-active', lang === 'es');
+    btnEn.setAttribute('aria-pressed', lang === 'en' ? 'true' : 'false');
+    btnEs.setAttribute('aria-pressed', lang === 'es' ? 'true' : 'false');
+  }
+
+  btnEn.addEventListener('click', function(){ setLang('en'); });
+  btnEs.addEventListener('click', function(){ setLang('es'); });
+
+  // ---------- COUNTDOWN ----------
+  // Sale ends Monday, December 14, 2026 at 11:59:59 PM Eastern (EST, UTC-5)
+  var target = Date.UTC(2026, 11, 15, 4, 59, 59);
+  var elDays = document.getElementById('cd-days');
+  var elHours = document.getElementById('cd-hours');
+  var elMin = document.getElementById('cd-min');
+  var elSec = document.getElementById('cd-sec');
+  var wrap = document.getElementById('countdown');
+
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+
+  function tick(){
+    var diff = target - Date.now();
+    if (diff <= 0) {
+      saleEnded = true;
+      wrap.style.display = 'none';
+      label.textContent = I18N[currentLang].cdEnded;
+      clearInterval(timer);
+      return;
+    }
+    var s = Math.floor(diff / 1000);
+    var d = Math.floor(s / 86400);
+    var h = Math.floor((s % 86400) / 3600);
+    var m = Math.floor((s % 3600) / 60);
+    var sec = s % 60;
+    elDays.textContent = pad(d);
+    elHours.textContent = pad(h);
+    elMin.textContent = pad(m);
+    elSec.textContent = pad(sec);
+  }
+  var timer = setInterval(tick, 1000);
+  tick();
+</script>
+</body>
+</html>
