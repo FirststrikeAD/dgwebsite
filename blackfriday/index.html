@@ -285,7 +285,7 @@
     margin:0;
     font-family:var(--serif);
     font-weight:700;
-    font-size:clamp(24px,4vw,34px);
+    font-size:clamp(16px,4.6vw,34px);
     line-height:1.15;
   }
 
@@ -469,63 +469,54 @@
 
   /* ---------- CONTEST ---------- */
   .contest{
-    background:var(--mint-pale);
-    border:1px solid var(--line-dark);
+    background:#141414;
+    border:1px solid #141414;
     border-radius:22px;
-    padding:44px 40px;
+    padding:48px 44px;
     margin-top:56px;
-    display:grid;
-    grid-template-columns:1.35fr .65fr;
-    gap:32px;
-    align-items:center;
+    color:#fff;
   }
-  .contest .kicker{color:var(--green)}
-  .contest h2{margin-bottom:12px}
-  .contest .lead{
-    font-size:18px;
-    margin:0 0 22px;
-    color:var(--ink-soft);
-    max-width:480px;
+  .contest .kicker{color:var(--pink)}
+  .contest h2{
+    margin-bottom:26px;
+    color:#fff;
+    font-size:clamp(36px,5.2vw,56px);
+    line-height:1.08;
+    max-width:640px;
   }
   .contest-steps{
-    list-style:none;
-    margin:0 0 22px;
-    padding:0;
+    margin:0 0 28px;
+    padding-left:1.35em;
     display:grid;
-    gap:10px;
-    font-size:17px;
-    font-weight:600;
-    color:var(--pink);
-  }
-  .contest-steps .n{
-    display:inline-flex;
-    width:28px;height:28px;
-    border-radius:50%;
-    background:var(--green);
+    gap:16px;
+    font-size:clamp(18px,2.4vw,22px);
+    font-weight:500;
+    line-height:1.45;
     color:#fff;
-    font-size:14px;
-    font-weight:800;
-    align-items:center;justify-content:center;
-    margin-right:10px;
-    vertical-align:-7px;
+    max-width:600px;
   }
-  .contest-steps a{font-weight:800}
-  .contest .winner{
-    margin:0;
-    font-weight:700;
-    color:var(--green);
-    font-size:16px;
+  .contest-steps a{font-weight:800;color:#fff}
+  .contest-fine{
+    margin:0 0 34px;
+    font-size:15px;
+    line-height:1.55;
+    color:#B9B3B8;
+    max-width:560px;
   }
   .contest-prize{
-    text-align:center;
+    text-align:left;
   }
   .contest-prize .amount{
     font-family:var(--serif);
     font-weight:900;
-    font-size:clamp(56px,8vw,88px);
+    font-size:clamp(88px,15vw,156px);
     line-height:1;
-    color:var(--green);
     display:block;
+    color:var(--pink);
+    background:linear-gradient(92deg,var(--brand) 10%,var(--pink) 90%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
   }
   .contest-prize .in-credit{
     display:block;
@@ -534,10 +525,11 @@
     letter-spacing:.12em;
     font-size:12.5px;
     text-transform:uppercase;
-    color:var(--green);
+    color:#E8E4E6;
   }
 
   /* ---------- FAQ ---------- */
+  #faq-h{color:#1D1D1B}
   .faq-list{display:grid;gap:12px;margin-top:10px}
   details.faq{
     background:var(--white);
@@ -549,7 +541,7 @@
     list-style:none;
     cursor:pointer;
     padding:20px 22px;
-    color:var(--pink);
+    color:#1D1D1B;
     font-weight:800;
     font-size:17px;
     display:flex;
@@ -564,7 +556,7 @@
     width:0;height:0;
     border-top:6px solid transparent;
     border-bottom:6px solid transparent;
-    border-left:9px solid var(--pink);
+    border-left:9px solid #1D1D1B;
     transition:transform .18s ease;
   }
   details.faq[open ] summary::before{transform:rotate(90deg)}
@@ -584,9 +576,14 @@
     text-align:center;
   }
   .final-cta h2{
-    font-size:clamp(32px,5.4vw,50px);
-    max-width:820px;
+    font-size:clamp(26px,4vw,42px);
+    max-width:1100px;
     margin:0 auto 16px;
+    color:#1D1D1B;
+    text-wrap:balance;
+  }
+  @media (max-width:540px){
+    .banner-book{font-size:11.5px}
   }
   .final-cta p{
     margin:0;
@@ -611,8 +608,7 @@
   @media (max-width:820px){
     .grid{grid-template-columns:repeat(2,1fr)}
     .steps{grid-template-columns:1fr}
-    .contest{grid-template-columns:1fr;padding:34px 26px}
-    .contest-prize{text-align:left}
+    .contest{padding:36px 26px}
     section{padding:52px 0 4px}
   }
   @media (max-width:540px){
@@ -644,10 +640,10 @@
       <p class="eyebrow" data-i18n="eyebrow">Black Friday Sale · Nov 23 to Dec 14 · For Metro Atlanta Real Estate Agents, Realtors &amp; Brokers</p>
       <h1 data-i18n="h1">Stock up on listing media. <span class="accent">Get up to 20% free.</span></h1>
       <p class="subhead" data-i18n="subhead">Prepay for your 2027 listing photos, video, drone and more, and we&rsquo;ll add bonus credit on top. Your credit never expires.</p>
-      <div class="restriction" data-i18n="restriction">For listing media only. One purchase per person.</div>
+      <div class="restriction" data-i18n="restriction">For listing media only. Buy more anytime, your credit stacks.</div>
 
       <div class="hero-actions">
-        <a class="book-btn" href="https://book.deflyinggravity.com" data-i18n="bookShoot">Book a Shoot &rarr;</a>
+        <a class="book-btn" href="https://book.deflyinggravity.com" data-i18n="bookShoot">Book at book.deflyinggravity.com &rarr;</a>
       </div>
 
       <p class="countdown-label" id="cd-label" data-i18n="cdLabel">Sale ends Monday, Dec 14 at midnight.</p>
@@ -664,7 +660,7 @@
   <div class="banner">
     <p class="wordmark wordmark-on-dark brand-line-banner" aria-label="DeFLYING GRAVITY"><span class="wm-fly">DeFLYING</span> <span class="wm-grav">GRAVITY</span></p>
     <p data-i18n="bannerLine">$5,000 gets you $6,000. No catch.</p>
-    <a class="banner-book" href="https://book.deflyinggravity.com" data-i18n="bannerBook">Book your next shoot &rarr;</a>
+    <a class="banner-book" href="https://book.deflyinggravity.com" data-i18n="bannerBook">Book your next shoot at book.deflyinggravity.com &rarr;</a>
   </div>
 
   <!-- PRICING -->
@@ -673,7 +669,7 @@
       <p class="kicker" data-i18n="pricingKicker">Pick Your Amount</p>
       <h2 id="pricing-h" data-i18n="pricingH">Choose Your Credit</h2>
       <p class="intro" data-i18n="pricingIntro">Choose a tier, check out securely, and we&rsquo;ll load your credit within one business day.</p>
-      <div class="restriction-inline" data-i18n="restriction">For listing media only. One purchase per person.</div>
+      <div class="restriction-inline" data-i18n="restriction">For listing media only. Buy more anytime, your credit stacks.</div>
 
       <div class="grid">
         <article class="card">
@@ -720,7 +716,7 @@
         </article>
       </div>
 
-      <p class="under-note" data-i18n="underNote">Listing media only. One purchase per person. Already have credit? <a href="https://book.deflyinggravity.com">Book your shoot at book.deflyinggravity.com &rarr;</a></p>
+      <p class="under-note" data-i18n="underNote">Listing media only. Buy more anytime, your credit stacks. Already have credit? <a href="https://book.deflyinggravity.com">Book your shoot at book.deflyinggravity.com &rarr;</a></p>
     </div>
   </section>
 
@@ -756,21 +752,18 @@
         <span class="chip" data-i18n="chipFloor">Floor Plans</span>
         <span class="chip" data-i18n="chip360">360 Tours</span>
       </div>
-      <p class="fine-line" data-i18n="restrictionShort">Listing media only. One purchase per person.</p>
+      <p class="fine-line" data-i18n="restrictionShort">Listing media only. Buy more anytime, your credit stacks.</p>
 
       <!-- CONTEST -->
       <div class="contest">
-        <div>
-          <p class="kicker" data-i18n="contestKicker">A $500 Contest</p>
-          <h2 data-i18n="contestH">Post. Tag. Win $500.</h2>
-          <p class="lead" data-i18n="contestLead">Buy any tier and post and tag by Dec 13, one winner takes home $500 in extra credit.</p>
-          <ul class="contest-steps">
-            <li><span class="n" aria-hidden="true">1</span><span data-i18n="contestStep1">Post a story or reel</span></li>
-            <li><span class="n" aria-hidden="true">2</span><span data-i18n="contestStep2">Tag <a href="https://www.instagram.com/a_adrian_d">@a_adrian_d</a></span></li>
-            <li><span class="n" aria-hidden="true">3</span><span data-i18n="contestStep3">One entry per purchase</span></li>
-          </ul>
-          <p class="winner" data-i18n="contestWinner">Winner announced Monday, Dec 14.</p>
-        </div>
+        <p class="kicker" data-i18n="contestKicker">Contest · Enter by Dec 13</p>
+        <h2 data-i18n="contestH">Post. Tag. Win $500.</h2>
+        <ol class="contest-steps">
+          <li data-i18n="contestStep1">Buy any tier of Black Friday credit.</li>
+          <li><span data-i18n="contestStep2">Post a story or reel and tag <a href="https://www.instagram.com/a_adrian_d">@a_adrian_d</a> by Dec 13.</span></li>
+          <li data-i18n="contestStep3">You're entered. Winner announced Monday, Dec 14.</li>
+        </ol>
+        <p class="contest-fine" data-i18n="contestFine">One entry per purchase. The prize is $500 in extra credit, and credit never expires. Not sponsored by or affiliated with Instagram.</p>
         <div class="contest-prize" aria-hidden="true">
           <span class="amount">$500</span>
           <span class="in-credit" data-i18n="contestPrizeLabel">In Extra Credit</span>
@@ -831,7 +824,7 @@
   </div>
 
   <footer>
-    <span class="wordmark footer-brand" aria-label="DeFLYING GRAVITY"><span class="wm-fly">DeFLYING</span> <span class="wm-grav">GRAVITY</span></span> &middot; <span data-i18n="footerMedia">Metro Atlanta Real Estate Media</span> &middot; <a href="https://book.deflyinggravity.com" data-i18n="footerBook">Book Online</a> &middot; <a href="tel:+18636044376">(863) 604-4376</a>
+    <span class="wordmark footer-brand" aria-label="DeFLYING GRAVITY"><span class="wm-fly">DeFLYING</span> <span class="wm-grav">GRAVITY</span></span> &middot; <span data-i18n="footerMedia">Metro Atlanta Real Estate Media</span> &middot; <a href="https://deflyinggravity.com/blackfriday" data-i18n="footerBook">deflyinggravity.com/blackfriday</a>
   </footer>
 
 <script>
@@ -842,9 +835,9 @@
       eyebrow: "Black Friday Sale \u00B7 Nov 23 to Dec 14 \u00B7 For Metro Atlanta Real Estate Agents, Realtors & Brokers",
       h1: "Stock up on listing media. <span class=\"accent\">Get up to 20% free.</span>",
       subhead: "Prepay for your 2027 listing photos, video, drone and more, and we\u2019ll add bonus credit on top. Your credit never expires.",
-      restriction: "For listing media only. One purchase per person.",
-      restrictionShort: "Listing media only. One purchase per person.",
-      bookShoot: "Book a Shoot \u2192",
+      restriction: "For listing media only. Buy more anytime, your credit stacks.",
+      restrictionShort: "Listing media only. Buy more anytime, your credit stacks.",
+      bookShoot: "Book at book.deflyinggravity.com \u2192",
       cdLabel: "Sale ends Monday, Dec 14 at midnight.",
       cdEnded: "This sale has ended.",
       cdAria: "Time left in the sale",
@@ -853,7 +846,7 @@
       cdMin: "Min",
       cdSec: "Sec",
       bannerLine: "$5,000 gets you $6,000. No catch.",
-      bannerBook: "Book your next shoot \u2192",
+      bannerBook: "Book your next shoot at book.deflyinggravity.com \u2192",
       pricingKicker: "Pick Your Amount",
       pricingH: "Choose Your Credit",
       pricingIntro: "Choose a tier, check out securely, and we\u2019ll load your credit within one business day.",
@@ -879,7 +872,7 @@
       buy4000: "Buy $4,000",
       buy5000: "Buy $5,000",
       bestTag: "BEST VALUE",
-      underNote: "Listing media only. One purchase per person. Already have credit? <a href=\"https://book.deflyinggravity.com\">Book your shoot at book.deflyinggravity.com \u2192</a>",
+      underNote: "Listing media only. Buy more anytime, your credit stacks. Already have credit? <a href=\"https://book.deflyinggravity.com\">Book your shoot at book.deflyinggravity.com \u2192</a>",
       howKicker: "How It Works",
       howH: "Three easy steps.",
       step1t: "Buy your credit",
@@ -895,13 +888,12 @@
       chipTwilight: "Twilight",
       chipFloor: "Floor Plans",
       chip360: "360 Tours",
-      contestKicker: "A $500 Contest",
+      contestKicker: "Contest · Enter by Dec 13",
       contestH: "Post. Tag. Win $500.",
-      contestLead: "Buy any tier and post and tag by Dec 13, one winner takes home $500 in extra credit.",
-      contestStep1: "Post a story or reel",
-      contestStep2: "Tag <a href=\"https://www.instagram.com/a_adrian_d\">@a_adrian_d</a>",
-      contestStep3: "One entry per purchase",
-      contestWinner: "Winner announced Monday, Dec 14.",
+      contestStep1: "Buy any tier of Black Friday credit.",
+      contestStep2: "Post a story or reel and tag <a href=\"https://www.instagram.com/a_adrian_d\">@a_adrian_d</a> by Dec 13.",
+      contestStep3: "You're entered. Winner announced Monday, Dec 14.",
+      contestFine: "One entry per purchase. The prize is $500 in extra credit, and credit never expires. Not sponsored by or affiliated with Instagram.",
       contestPrizeLabel: "In Extra Credit",
       faqKicker: "Questions",
       faqH: "Good to Know.",
@@ -922,16 +914,16 @@
       finalBtn: "Book Now at book.deflyinggravity.com",
       finalQ: "Questions? Text or call us at <a href=\"tel:+18636044376\">(863) 604-4376</a>.",
       footerMedia: "Metro Atlanta Real Estate Media",
-      footerBook: "Book Online"
+      footerBook: "deflyinggravity.com/blackfriday"
     },
     es: {
       docTitle: "Venta Black Friday de Cr\u00E9dito para Medios \u2014 DeFLYING GRAVITY",
       eyebrow: "Venta de Black Friday \u00B7 Del 23 de noviembre al 14 de diciembre \u00B7 Para agentes de bienes ra\u00EDces, realtors y brokers del \u00E1rea metropolitana de Atlanta",
       h1: "Abastece tu cr\u00E9dito para medios de listados. <span class=\"accent\">Recibe hasta un 20% gratis.</span>",
       subhead: "Paga por adelantado las fotos, el video, el dron y m\u00E1s para tus listados de 2027, y te agregaremos cr\u00E9dito adicional. Tu cr\u00E9dito nunca vence.",
-      restriction: "Solo para medios de listados. Una compra por persona.",
-      restrictionShort: "Solo para medios de listados. Una compra por persona.",
-      bookShoot: "Reserva una sesi\u00F3n \u2192",
+      restriction: "Solo para medios de listados. Compra más cuando quieras, tu crédito se acumula.",
+      restrictionShort: "Solo para medios de listados. Compra más cuando quieras, tu crédito se acumula.",
+      bookShoot: "Reserva en book.deflyinggravity.com \u2192",
       cdLabel: "La venta termina el lunes 14 de diciembre a la medianoche.",
       cdEnded: "Esta venta ha terminado.",
       cdAria: "Tiempo restante de la venta",
@@ -940,7 +932,7 @@
       cdMin: "Min",
       cdSec: "Seg",
       bannerLine: "$5,000 te dan $6,000. Sin trucos.",
-      bannerBook: "Reserva tu pr\u00F3xima sesi\u00F3n \u2192",
+      bannerBook: "Reserva tu pr\u00F3xima sesi\u00F3n en book.deflyinggravity.com \u2192",
       pricingKicker: "Elige tu monto",
       pricingH: "Elige tu cr\u00E9dito",
       pricingIntro: "Elige un nivel, paga de forma segura y cargaremos tu cr\u00E9dito dentro de un d\u00EDa laborable.",
@@ -966,7 +958,7 @@
       buy4000: "Comprar $4,000",
       buy5000: "Comprar $5,000",
       bestTag: "MEJOR VALOR",
-      underNote: "Solo para medios de listados. Una compra por persona. \u00BFYa tienes cr\u00E9dito? <a href=\"https://book.deflyinggravity.com\">Reserva tu sesi\u00F3n en book.deflyinggravity.com \u2192</a>",
+      underNote: "Solo para medios de listados. Compra más cuando quieras, tu crédito se acumula. \u00BFYa tienes cr\u00E9dito? <a href=\"https://book.deflyinggravity.com\">Reserva tu sesi\u00F3n en book.deflyinggravity.com \u2192</a>",
       howKicker: "C\u00F3mo funciona",
       howH: "Tres pasos sencillos.",
       step1t: "Compra tu cr\u00E9dito",
@@ -982,13 +974,12 @@
       chipTwilight: "Atardecer",
       chipFloor: "Planos de planta",
       chip360: "Tours 360",
-      contestKicker: "Un concurso de $500",
+      contestKicker: "Concurso · Hasta el 13 de diciembre",
       contestH: "Publica. Etiqueta. Gana $500.",
-      contestLead: "Compra cualquier nivel y publica y etiqueta a m\u00E1s tardar el 13 de diciembre: un ganador se llevar\u00E1 $500 en cr\u00E9dito extra.",
-      contestStep1: "Publica una historia o un reel",
-      contestStep2: "Etiqueta a <a href=\"https://www.instagram.com/a_adrian_d\">@a_adrian_d</a>",
-      contestStep3: "Una participaci\u00F3n por compra",
-      contestWinner: "El ganador se anunciar\u00E1 el lunes 14 de diciembre.",
+      contestStep1: "Compra cualquier nivel de cr\u00E9dito de Black Friday.",
+      contestStep2: "Publica una historia o un reel y etiqueta a <a href=\"https://www.instagram.com/a_adrian_d\">@a_adrian_d</a> a m\u00E1s tardar el 13 de diciembre.",
+      contestStep3: "Ya est\u00E1s participando. El ganador se anunciar\u00E1 el lunes 14 de diciembre.",
+      contestFine: "Una participaci\u00F3n por compra. El premio es $500 en cr\u00E9dito extra, y el cr\u00E9dito nunca vence. Sin patrocinio ni afiliaci\u00F3n con Instagram.",
       contestPrizeLabel: "En cr\u00E9dito extra",
       faqKicker: "Preguntas",
       faqH: "Lo que debes saber.",
@@ -1009,7 +1000,7 @@
       finalBtn: "Reserva ahora en book.deflyinggravity.com",
       finalQ: "\u00BFPreguntas? Env\u00EDanos un mensaje de texto o ll\u00E1manos al <a href=\"tel:+18636044376\">(863) 604-4376</a>.",
       footerMedia: "Medios inmobiliarios del \u00E1rea metropolitana de Atlanta",
-      footerBook: "Reserva en l\u00EDnea"
+      footerBook: "deflyinggravity.com/blackfriday"
     }
   };
 
